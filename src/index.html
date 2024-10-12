@@ -112,22 +112,22 @@
         <div id="photos">
             <div class="photo-container">
                 <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/06/lugares-para-viajar-brasil.jpg" alt="Destino 1" class="photo" onclick="chooseDestination('Destino 1')">
-                <div class="vote-count" id="vote-count-destino1">0 votos</div>
+                
             </div>
             <div class="photo-container">
                 <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/06/lugares-viajar-brasil-praia-forte.jpeg" alt="Destino 2" class="photo" onclick="chooseDestination('Destino 2')">
-                <div class="vote-count" id="vote-count-destino2">0 votos</div>
+                
             </div>
             <div class="photo-container">
                 <img src="https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/u4emcofpawwoazsqckft" alt="Destino 3" class="photo" onclick="chooseDestination('Destino 3')">
-                <div class="vote-count" id="vote-count-destino3">0 votos</div>
+                
             </div>
         </div>
         <div id="qrcode-container">
             <canvas id="qrcode"></canvas>
             <div id="qrcode-text">
-                <p>Obrigado por participar!</p>
-                <p>Para mais informações, escaneie o QR Code.</p>
+                <p>Muito Obrigado!</p>
+                <p>Esperamos você dia 08/02/2025</p>
             </div>
         </div>
     </div>
@@ -141,12 +141,12 @@
         setTimeout(() => {
             document.getElementById('names').style.display = 'none';
             document.getElementById('message').style.display = 'block';
-        }, 2000);
+        }, 5000);
 
         setTimeout(() => {
             document.getElementById('message').style.display = 'none';
             document.getElementById('photos').style.display = 'block';
-        }, 5000);
+        }, 8000);
 
         function chooseDestination(destination) {
             votes[destination]++;
