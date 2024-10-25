@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casamento Camila & Willian</title>
   <style>
-
-    
       body, html {
           margin: 0;
           padding: 0;
@@ -15,7 +13,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          background: url('fotos\\IMG_7697.jpeg') no-repeat center center fixed;
+          background: url('fotos\\2.jpg') no-repeat center center fixed;
           background-size: cover;
           font-family: 'Georgia', serif;
           color: #333;
@@ -44,18 +42,6 @@
           font-size: 1.2em;
           margin-bottom: 20px;
       }
-
-    .photos-container {
-      position: absolute;
-      animation: fadeAndMove 5s infinite ease-in-out;
-    }
-    .photoss {
-      width: 150px;
-      height: auto;
-      margin: 10px;
-      border-radius: 10px;
-    }
-
       #photos {
           display: none;
       }
@@ -85,7 +71,7 @@
           from { opacity: 0; }
           to { opacity: 1; }
       }
-      
+     
       @keyframes fall {
           to {
               transform: translateY(100vh) rotate(360deg);
@@ -104,27 +90,7 @@
           margin-top: 10px;
           font-size: 1.2em;
           color: #555;
-          
       }
-
-      @keyframes fadeAndMove {
-      0% {
-        opacity: 0;
-        transform: scale(0) translateY(0);
-      }
-      10% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-      90% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(100vh) rotate(360deg);
-      }
-    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
@@ -135,71 +101,6 @@
       <p>Queridos convidados,</p>
       <p>Se você está aqui é porque foi convidado para esse dia especial! Será uma honra contar com a sua presença. Segue abaixo 3 opções de presente para nossa lua de mel. Escolhemos 3 destinos para que você vote e nos presenteie com o valor que desejar.</p>
     </div>
-
-   
-
-    <div class="photos-container">
-        <img src="fotos\IMG_1853 (1).jpg" class="photoss" alt="Foto 1">
-      </div>
-      <div class="photos-container">
-        <img src="fotos\IMG_1572.jpg" class="photoss" alt="Foto 2">
-      </div>
-      <div class="photos-container">
-        <img src="fotos\IMG_1632.jpg" class="photoss" alt="Foto 3">
-      </div>
-
-      
-      <script>
-        const photos = document.querySelectorAll('.photos-container');
-        const positions = [];
-    
-        // Função para definir posições aleatórias sem sobreposição
-        function randomPosition(element) {
-          let x, y, overlap;
-    
-          do {
-            // Gera coordenadas aleatórias
-            x = Math.random() * (window.innerWidth - element.offsetWidth);
-            y = Math.random() * (window.innerHeight - element.offsetHeight);
-    
-            // Verifica se já existe outra foto nas mesmas coordenadas
-            overlap = positions.some(pos => {
-              return (
-                x < pos.x + element.offsetWidth &&
-                x + element.offsetWidth > pos.x &&
-                y < pos.y + element.offsetHeight &&
-                y + element.offsetHeight > pos.y
-              );
-            });
-    
-          } while (overlap); // Repete até encontrar uma posição sem sobreposição
-    
-          // Salva a posição
-          positions.push({ x, y });
-          
-          // Aplica as coordenadas
-          element.style.left = `${x}px`;
-          element.style.top = `${y}px`;
-        }
-    
-        // Função para randomizar as posições das fotos e os tempos de exibição
-        function randomizePhotos() {
-          photos.forEach(photo => {
-            randomPosition(photo);
-            const delay = Math.random() * 6; // Adiciona um delay aleatório entre 0 e 3 segundos
-            photo.style.animationDelay = `${delay}s`;
-          });
-        }
-    
-        // Inicializa com posições aleatórias
-        randomizePhotos();
-        // Atualiza as posições a cada 5 segundos
-        setInterval(() => {
-          positions.length = 0; // Limpa as posições anteriores para recalcular
-          randomizePhotos();
-        }, 8000);
-      </script>
-
     <div id="photos">
       <div class="photo-container">
         <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/06/lugares-para-viajar-brasil.jpg" alt="Destino 1" class="photo" onclick="chooseDestination(this)">
@@ -212,9 +113,8 @@
       </div>
     </div>
     <div id="qrcode-container">
-        <img src="fotos\qrcode.jpeg"  class="photo" >
+        <img src="qrcode.jpeg">
       <div id="qrcode-text">
-        
         <p>Muito Obrigado!</p>
         <p>Esperamos você dia 08/02/2025</p>
       </div>
@@ -263,6 +163,31 @@
         document.getElementById('qrcode-container').style.display = 'block';
     }
 
+  
+    const backgrounds = [
+      'fotos/2.jpg',
+      'fotos/1.jpg',
+      'fotos/3.jpg',
+      'fotos/4.jpg',
+      'fotos/5.jpg',
+      'fotos/6.jpg',
+    ];
+
+    let currentBackground = 0;
+
+    function changeBackground() {
+      // Muda o fundo da página
+      document.body.style.backgroundImage = `url(${backgrounds[currentBackground]})`;
+
+      // Atualiza o índice para a próxima imagem
+      currentBackground = (currentBackground + 1) % backgrounds.length;
+    }
+
+    // Inicializa com o primeiro fundo
+    changeBackground();
+
+    // Muda o fundo a cada 5 segundos
+    setInterval(changeBackground, 5000);
 
 </script>
 </body>
