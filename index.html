@@ -91,6 +91,24 @@
           font-size: 1.2em;
           color: #555;
       }
+        .button {
+            background-color: #a7a4a4e8;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #8b0000;
+        }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
@@ -104,17 +122,22 @@
     <div id="photos">
       <div class="photo-container">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9f3Od71HJg-TWNEby2S9VN2Np5WgHeYrjsoGUnZ9LoNJ_bipdWhXsu0EQ&s=10" alt="Destino 1" class="photo" onclick="chooseDestination(this)">
-      </div>
+        <p>Punta Cana</p>  
+    </div>
       <div class="photo-container">
         <img src="https://media.staticontent.com/media/pictures/5cc13b62-c0dc-4143-b3e0-a895752c280e" alt="Destino 2" class="photo" onclick="chooseDestination(this)">
-      </div>
+        <p>San Andrés</p>  
+    </div>
       <div class="photo-container">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYwdW-8wUY3zp6gC3s1q1lW67d_im0YQoCrx10tlgwPwDJd9XeDUu8S7E&s=10" alt="Destino 3" class="photo" onclick="chooseDestination(this)">
-      </div>
+        <p>Maceió</p>  
+    </div>
     </div>
     <div id="qrcode-container">
-        <img src="fotos\qrcode.jpeg" class="photo">
-      <div id="qrcode-text">
+        <img src="fotos\qrcode.jpeg" class="photo" onclick="copyText()">
+    
+        <div id="qrcode-text">
+            <button class="button" onclick="copyText()">Copiar Chave PIX</button>
         <p>Muito Obrigado!</p>
         <p>Esperamos você dia 08/02/2025</p>
       </div>
@@ -190,5 +213,21 @@
     setInterval(changeBackground, 10000);
 
 </script>
+
+<script>
+    function copyText() 
+        {
+  var textToCopy = "41996166862";
+  
+  var tempInput = document.createElement("input");
+  tempInput.value = textToCopy;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+ 
+ // alert("Texto copiado: " + textToCopy);
+    }
+    </script>
 </body>
 </html>
